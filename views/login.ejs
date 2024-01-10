@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="shortcut icon" type="png" href="images/icon/favicon.png">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+	<title>Login SignUp</title>
+	<link rel="stylesheet" type="text/css" href="css/loginStyle.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+		<div class="form-box">
+			<div class="button-box">
+				<div id="btn"></div>
+				<button type="button" class="toggle-btn" id="log" onclick="login()" style="color: #fff;">Log In</button>
+				<button type="button" class="toggle-btn" id="reg" onclick="register()">Register</button>
+			</div>
+			<div class="social-icons">
+				<img src="images/icon/fb2.png">
+				<img src="images/icon/insta2.png">
+				<img src="images/icon/tt2.png">
+			</div>
+			
+			<!-- Login Form -->
+			<form id="login" class="input-group" action="login" method="post">
+				<div class="inp">
+					<img src="images/icon/user.png">
+					<input type="text" name="username" id="username" class="input-field" placeholder="Username or Phone Number" style="width: 88%; border:none;" required="required">
+				</div>
+				<div class="inp">
+					<img src="images/icon/password.png">
+					<input type="password" name="password" id="password" class="input-field" placeholder="Password" style="width: 88%; border: none;" required="required">
+				</div>
+				<input type="checkbox" class="check-box">Remember Password
+				<button type="submit" class="submit-btn">Log In</button>
+			</form>
+
+
+			<div class="other" id="other">
+				<div class="instead">
+					<h3>or</h3>
+				</div>
+				<button class="connect" onclick="google()">
+					<img src="images/icon/google.png"><span>Sign in with Google</span>
+				</button>
+			</div>
+			
+			<!-- Registration Form -->
+	<form id="register" action="register" method="post" class="input-group">
+	<input type="text" class="input-field" name="fullName" placeholder="Full Name" required="required">
+	<input type="text" class="input-field" name="username" placeholder="Username" required="required">
+	<input type="email" class="input-field" name="email" placeholder="Email Address" required="required">
+	<input type="password" class="input-field" placeholder="Create Password" name="password" required="required">
+
+	<!-- Image Upload Input and Preview -->
+	<div class="image-upload">
+		<label class="custom-file-upload">
+		  <input type="file" class="input-field" name="picturePath" accept="image/*" style="display: none;" onchange="showImagePreview(this)">
+		  <i class="fas fa-upload"></i> Upload Photo
+		</label>
+		<div class="image-preview">
+		  <img id="imagePreview" src="" alt="">
+		</div>
+		<div id="fileNameDisplay"></div>
+	  </div>
+	<!-- End of Image Upload Input and Preview -->
+  
+	<!-- Checkbox for Terms & Conditions -->
+	<!-- <input type="checkbox" class="check-box" id="chkAgree" onclick="goFurther()"> I agree to the Terms & Conditions -->
+	<button type="submit" id="btnSubmit" class="submit-btn">Register</button>
+  </form>
+		</div>
+		<script type="text/javascript" src="js/script.js"></script>
+
+		<script>
+			function showImagePreview(input) {
+				var fileInput = input;
+				var imagePreview = document.getElementById('imagePreview');
+				var fileNameDisplay = document.getElementById('fileNameDisplay');
+
+				// Check if a file is selected
+				if (fileInput.files && fileInput.files[0]) {
+					var reader = new FileReader();
+
+					// Set up the reader to read the image file
+					reader.onload = function (e) {
+					// Update the src attribute of the imagePreview with the data URL of the selected image
+					imagePreview.src = e.target.result;
+
+					// Display the name of the selected file
+					fileNameDisplay.textContent = fileInput.files[0].name;
+					};
+
+					// Read the selected file as a data URL
+					reader.readAsDataURL(fileInput.files[0]);
+				}
+		}
+		</script>
+</body>
+</html>
