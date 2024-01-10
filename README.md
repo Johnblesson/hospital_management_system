@@ -1,4 +1,2 @@
-# userManagemetSystem
-## Backend Application
-__server:NODE-EXPRESS__
-__view engine:ejs__
+## Hospital Management System
+## Account_Creation (Sudo Admin Panel)
